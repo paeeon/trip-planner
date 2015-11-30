@@ -111,10 +111,14 @@ h3 {
   background: #efecea;
   border-radius: 8px;
   border-width: 0;
-  margin-bottom: 0; }
+  margin-bottom: 0;
+  -webkit-box-shadow: 0px 2px 7px -1px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 2px 7px -1px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 2px 7px -1px rgba(0, 0, 0, 0.75); }
   .panel-default .panel-heading {
     background: #736357;
-    border-radius: 8px 8px 0 0; }
+    border-radius: 8px 8px 0 0;
+    border-width: 0; }
   .panel-default .panel-body {
     padding: 5px 15px; }
     .panel-default .panel-body > div {
@@ -135,7 +139,8 @@ h3 {
   display: inline-block;
   padding: 5px;
   border: 1px solid #736357;
-  border-radius: 5px; }
+  border-radius: 5px;
+  background-color: #efecea; }
   #day-title > * {
     display: inline-block;
     vertical-align: middle; }

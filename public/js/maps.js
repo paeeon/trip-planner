@@ -1,13 +1,15 @@
 function GoogleMap(){
-  var newyorkcity = new google.maps.LatLng(40.705189, -74.009209);
   this.mapOptions = {
-    center: newyorkcity,
+    center: new google.maps.LatLng(40.7222, -73.9932),
     zoom: 13,
     mapTypeId: google.maps.MapTypeId.ROADMAP,
     styles: styleArr
   };
-  this.map_canvas_obj = document.getElementById('map-canvas');
+  this.map_canvas_obj = document.createElement("div");
+  this.map_canvas_obj.className = "map-element";
+  this.map_canvas_obj.style.height = "100%";
   this.map = new google.maps.Map(this.map_canvas_obj, this.mapOptions);
+  document.getElementById('map-canvas').appendChild(this.map_canvas_obj);
   this.markers = [];
 }
 
@@ -40,16 +42,36 @@ GoogleMap.prototype.removeMarker = function(placeName) {
   });
   this.markers.splice(this.markers.indexOf(removeThis), 1);
   removeThis.setMap(null);
-}
+} 
 
-
-
-
-
-
-
-
-
+var styleArr = [{
+  featureType: 'landscape',
+  stylers: [{ saturation: -100 }, { lightness: 60 }]
+}, {
+  featureType: 'road.local',
+  stylers: [{ saturation: -100 }, { lightness: 40 }, { visibility: 'on' }]
+}, {
+  featureType: 'transit',
+  stylers: [{ saturation: -100 }, { visibility: 'simplified' }]
+}, {
+  featureType: 'administrative.province',
+  stylers: [{ visibility: 'off' }]
+}, {
+  featureType: 'water',
+  stylers: [{ visibility: 'on' }, { lightness: 30 }]
+}, {
+  featureType: 'road.highway',
+  elementType: 'geometry.fill',
+  stylers: [{ color: '#ef8c25' }, { lightness: 40 }]
+}, {
+  featureType: 'road.highway',
+  elementType: 'geometry.stroke',
+  stylers: [{ visibility: 'off' }]
+}, {
+  featureType: 'poi.park',
+  elementType: 'geometry.fill',
+  stylers: [{ color: '#b6c54c' }, { lightness: 40 }, { saturation: -40 }]
+}];
 
 // function initialize_gmaps() {
 
@@ -111,38 +133,3 @@ GoogleMap.prototype.removeMarker = function(placeName) {
 //   //   });
 //   // });
 // }
-
-var theMap;
-
-$(document).ready(function() {
-  theMap = new GoogleMap();
-});
-
-var styleArr = [{
-  featureType: 'landscape',
-  stylers: [{ saturation: -100 }, { lightness: 60 }]
-}, {
-  featureType: 'road.local',
-  stylers: [{ saturation: -100 }, { lightness: 40 }, { visibility: 'on' }]
-}, {
-  featureType: 'transit',
-  stylers: [{ saturation: -100 }, { visibility: 'simplified' }]
-}, {
-  featureType: 'administrative.province',
-  stylers: [{ visibility: 'off' }]
-}, {
-  featureType: 'water',
-  stylers: [{ visibility: 'on' }, { lightness: 30 }]
-}, {
-  featureType: 'road.highway',
-  elementType: 'geometry.fill',
-  stylers: [{ color: '#ef8c25' }, { lightness: 40 }]
-}, {
-  featureType: 'road.highway',
-  elementType: 'geometry.stroke',
-  stylers: [{ visibility: 'off' }]
-}, {
-  featureType: 'poi.park',
-  elementType: 'geometry.fill',
-  stylers: [{ color: '#b6c54c' }, { lightness: 40 }, { saturation: -40 }]
-}];
